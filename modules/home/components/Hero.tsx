@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-
+const x = false;
 const Hero = () => {
 	return (
 		<div className='w-screen h-[500px] relative mb-10'>
