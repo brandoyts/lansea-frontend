@@ -68,7 +68,7 @@ const HamburgerNavItems = ({ onClick }: HamburgerNavItems) => {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="#listings">Listings</Link>
+            <Link href="/listing">Listings</Link>
           </li>
           <li>
             <Link href="#faq">FAQ</Link>
@@ -135,7 +135,7 @@ const Navigation = () => {
                 </Link>
               </li>
               <li>
-                <Link passHref href="#listings">
+                <Link passHref href="/listing">
                   Listings
                 </Link>
               </li>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ImagePreview = () => {
   return (
-    <div className="bg-black w-full h-[200px] rounded-t-lg relative">
+    <div className="bg-black w-full h-[200px]  relative">
       <Image
         layout="fill"
         objectFit="cover"

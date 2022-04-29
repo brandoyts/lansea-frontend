@@ -7,7 +7,7 @@ type DescriptionProps = {
 
 const Description = ({ title, description }: DescriptionProps) => {
   return (
-    <div className="mt-5">
+    <div className="my-5">
       <h2 className="text-lg font-bold">{title}</h2>
       <span>Brando Endona</span>
       <div className="mt-2">
