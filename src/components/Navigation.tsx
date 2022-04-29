@@ -35,7 +35,7 @@ type HamburgerCloseNavProps = {
 const HamburgerCloseNav = ({ onClick }: HamburgerCloseNavProps) => {
   return (
     <div
-      className="space-y-2 cursor-pointer md:hidden xs:block -top-5 relative"
+      className="space-y-2 cursor-pointer md:hidden xs:block -top-6 relative"
       onClick={onClick}
     >
       <svg
@@ -61,11 +61,11 @@ const HamburgerNavItems = ({ onClick }: HamburgerNavItems) => {
   return (
     <>
       <NavOverlay onClick={onClick} />
-      <div className="w-4/5 sm:w-2/5 absolute justify-between items-center md:hidden bg-indigo-700 p-12 right-0 bottom-0 top-0 z-5">
+      <div className="w-4/5 sm:w-2/5 absolute justify-between items-center md:hidden bg-indigo-700 p-12 right-0 bottom-0 top-0 z-50">
         <HamburgerCloseNav onClick={onClick} />
         <ul className="mt-20 flex flex-col justify-center  items-start gap-6">
           <li>
-            <Link href="#">Home</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
             <Link href="#listings">Listings</Link>
@@ -74,10 +74,10 @@ const HamburgerNavItems = ({ onClick }: HamburgerNavItems) => {
             <Link href="#faq">FAQ</Link>
           </li>
           <li>
-            <Link href="#login">Login</Link>
+            <Link href="/login">Login</Link>
           </li>
           <li>
-            <Link href="#register">Register</Link>
+            <Link href="/register">Register</Link>
           </li>
         </ul>
       </div>
@@ -86,12 +86,11 @@ const HamburgerNavItems = ({ onClick }: HamburgerNavItems) => {
 };
 
 type NavOverlayProps = HamburgerNavProps;
-
 const NavOverlay = ({ onClick }: NavOverlayProps) => {
   return (
     <div
       onClick={onClick}
-      className="absolute inset-0 bg-black opacity-50 h-full flex flex-col"
+      className="z-40 md:hidden absolute inset-0 bg-black opacity-80 h-full flex flex-col"
     ></div>
   );
 };
@@ -129,9 +128,9 @@ const Navigation = () => {
 
           {/* nav for md up screens */}
           <div className="hidden justify-between items-center md:flex gap-12  ">
-            <ul className="flex justify-between items-center gap-12 font-bold ">
+            <ul className="flex justify-between items-center gap-12 font-bold">
               <li>
-                <Link passHref href="#">
+                <Link passHref href="/">
                   Home
                 </Link>
               </li>
@@ -149,12 +148,12 @@ const Navigation = () => {
 
             <ul className="auth-links flex justify-between items-center gap-6">
               <li>
-                <Link passHref href="#login">
+                <Link passHref href="/login">
                   Login
                 </Link>
               </li>
               <li>
-                <Link passHref href="#register">
+                <Link passHref href="/register">
                   Register
                 </Link>
               </li>

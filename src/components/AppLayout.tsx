@@ -17,7 +17,6 @@ const AppLayout = ({ children, title }: TProps) => {
       </Head>
 
       <Navigation />
-
       <main>{children}</main>
     </>
   );
