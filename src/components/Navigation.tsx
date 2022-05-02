@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Container from "./Container";
+import authStore from "../store/authStore";
 
 type HamburgerNavProps = {
   onClick(): void;
@@ -97,6 +98,7 @@ const NavOverlay = ({ onClick }: NavOverlayProps) => {
 
 const Navigation = () => {
   const [toggleNav, setToggleNav] = useState(false);
+  const isAuth = authStore((state) => state.isAuth);
 
   return (
     <header className="bg-indigo-700 ">
@@ -147,17 +149,27 @@ const Navigation = () => {
             </ul>
 
             <ul className="auth-links flex justify-between items-center gap-6">
-              <li>
-                <Link passHref href="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link passHref href="/register">
-                  Register
-                </Link>
-              </li>
-              {/* <li><Link passHref href="#Logout">Logout</Link></li> */}
+              {!isAuth && (
+                <>
+                  <li>
+                    <Link passHref href="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link passHref href="/register">
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
+              {isAuth && (
+                <li>
+                  <Link passHref href="#Logout">
+                    Logout
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </nav>

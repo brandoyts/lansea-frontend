@@ -5,52 +5,48 @@ import FormGroup from "../../components/FormGroup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import registerSchema from "../../schemas/registerSchema";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import authStore from "../../store/authStore";
 
-type FormType = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  passwordConfirmation: string;
-};
+import { RegisterFormType } from "../../types";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormType>({
+  } = useForm<RegisterFormType>({
     resolver: yupResolver(registerSchema),
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const router = useRouter();
 
+  const isAuth = authStore((state) => state.isAuth);
+  const signin = authStore((state) => state.signup);
+
+  const onSubmit = handleSubmit(async (formData) => {
+    await signin(formData);
+  });
+
+  if (isAuth) {
+    router.push("/listing");
+  }
+
+  console.log(isAuth);
   return (
     <AuthWrapper>
       <div className="p-5 bg-indigo-500 shadow-xl rounded-md ">
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
           <FormGroup>
             <p className="text-red-200 animate-pulse animation">
-              {errors.firstName?.message}
+              {errors.name?.message}
             </p>
-            <label className="text-white">First Name:</label>
+            <label className="text-white">Name:</label>
             <input
               autoComplete="off"
               type="text"
               className="outline-none p-2 rounded-lg w-full"
-              {...register("firstName")}
-            />
-          </FormGroup>
-          <FormGroup>
-            <p className="text-red-200 animate-pulse animation">
-              {errors.lastName?.message}
-            </p>
-            <label className="text-white">Last Name:</label>
-            <input
-              autoComplete="off"
-              type="text"
-              className="outline-none p-2 rounded-lg w-full"
-              {...register("lastName")}
+              {...register("name")}
             />
           </FormGroup>
           <FormGroup>

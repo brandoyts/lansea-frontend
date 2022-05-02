@@ -3,18 +3,14 @@ import AuthWrapper from "../../components/AuthWrapper";
 import { useForm } from "react-hook-form";
 import FormGroup from "../../components/FormGroup";
 import Link from "next/link";
-
-type FormType = {
-  email: string;
-  password: string;
-};
+import { LoginFormType } from "../../types";
 
 const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormType>();
+  } = useForm<LoginFormType>();
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
